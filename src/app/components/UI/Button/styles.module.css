@@ -1,9 +1,19 @@
-.button {
+.shadow_primary {
 	box-shadow: inset 0 0 0 0 theme('colors.primary');
-	transition: 200ms linear;
+	transition: box-shadow 300ms;
 }
 
-.button:hover {
-	box-shadow: inset 400px 0 0 0 theme('colors.primary');
-	color: white;
+.shadow_green {
+	box-shadow: inset 0 0 0 0 theme('colors.green');
+	transition: box-shadow 300ms;
+}
+
+@media screen and (min-width: theme('screens.xl')) {
+	.shadow_primary:hover {
+		box-shadow: inset 400px 0 0 0 theme('colors.primary');
+	}
+
+	.shadow_green:hover {
+		box-shadow: inset 400px 0 0 0 theme('colors.green');
+	}
 }

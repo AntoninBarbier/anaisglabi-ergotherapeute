@@ -1,3 +1,64 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* VARIABLES */
+
+:root {
+	--icon-translation: 800px;
+}
+
+@media (min-width: 640px) {
+	:root {
+		--icon-translation: 300px;
+	}
+}
+
+/* GLOBAL STYLING */
+
+body {
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+@layer components {
+	.title {
+		@apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-[-2px] leading-[3rem];
+	}
+
+	.content-container {
+		@apply overflow-x-hidden px-4 md:px-8 xl:px-36 mb-12 md:mb-28;
+	}
+
+	.content-container--inner {
+		@apply 3xl:max-w-screen-xl 3xl:mx-auto 3xl:p-0;
+	}
+
+	.icon {
+		position: absolute;
+		max-width: 100%;
+	}
+}
+
+/* ANIMATIONS */
+
+@keyframes moveIcon {
+	to {
+		top: var(--icon-translation);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	.icon {
+		animation: moveIcon linear;
+		animation-timeline: view();
+	}
+}
