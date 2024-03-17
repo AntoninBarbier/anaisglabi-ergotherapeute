@@ -1,0 +1,180 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* VARIABLES */
+
+:root {
+	--icon-translation: 800px;
+}
+
+@media (min-width: 640px) {
+	:root {
+		--icon-translation: 300px;
+	}
+}
+
+/* GLOBAL STYLING */
+
+html {
+	scroll-padding-top: 6rem;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.navigation {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	right: 1rem;
+	width: 80%;
+	top: 5rem;
+	display: none;
+	transition: none;
+
+	@media screen and (min-width: theme("screens.md")) {
+		display: block;
+	}
+
+	&--invisible {
+		position: sticky;
+		top: -80px;
+		display: flex;
+		z-index: 200;
+		align-items: center;
+		justify-content: center;
+		height: 80px;
+		width: 100%;
+		transform: none;
+		left: 0;
+		@media screen and (min-width: theme("screens.md")) {
+			background-color: white;
+		}
+	}
+
+	&--sticky {
+		transition: top 0.5s;
+		top: 0px;
+	}
+
+	&__item {
+		position: relative;
+		&--active {
+			&::after {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 50px;
+				height: 1px;
+				left: 50%;
+				transform: translateX(-50%);
+				bottom: -10px;
+				background-color: theme("colors.primary");
+			}
+		}
+	}
+}
+
+// Mobile navigation side panel
+.navigation_side_panel {
+	@media (min-width: theme("screens.md")) {
+		display: none;
+	}
+	.backdrop {
+		position: fixed;
+		visibility: hidden;
+		left: 0;
+		top: 0;
+		background-color: #000;
+		opacity: 0;
+		z-index: 90;
+		width: 100%;
+		min-height: 100%;
+		transition: opacity visibility;
+		transition-duration: 2s, 0s;
+		transition-delay: 0s 2s;
+		pointer-events: none;
+	}
+
+	.panel {
+		position: fixed;
+		top: 0;
+		width: 90%;
+		left: 10%;
+		transform: translateX(100%);
+		min-height: 100vh;
+		background-color: #fff;
+		transition: transform 0.4s 0.5s;
+		z-index: 100;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		justify-content: center;
+		align-items: center;
+
+		.navigation__item {
+			color: theme("colors.primary");
+			font-weight: theme("fontWeight.bold");
+		}
+	}
+
+	&--open {
+		.backdrop {
+			visibility: visible;
+			opacity: 0.5;
+			pointer-events: all;
+		}
+
+		.panel {
+			transform: translateX(0);
+		}
+	}
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+@layer components {
+	.title {
+		@apply text-2xl md:text-4xl lg:text-5xl font-bold tracking-[-2px] leading-[3rem];
+	}
+
+	.content-container {
+		@apply px-4 md:px-8 xl:px-36 mb-12 md:mb-28 relative;
+	}
+
+	.content-container--inner {
+		@apply 3xl:max-w-screen-xl 3xl:mx-auto 3xl:p-0;
+	}
+
+	.icon {
+		position: absolute;
+		max-width: 100%;
+	}
+
+	.menu-item::after {
+	}
+}
+
+/* ANIMATIONS */
+
+@keyframes moveIcon {
+	to {
+		top: var(--icon-translation);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	.icon {
+		animation: moveIcon linear;
+		animation-timeline: view();
+	}
+}

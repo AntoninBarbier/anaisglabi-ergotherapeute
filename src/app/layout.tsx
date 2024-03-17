@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './globals.scss'
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google'
 import localFont from 'next/font/local'
 
