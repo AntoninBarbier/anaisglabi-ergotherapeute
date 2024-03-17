@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import Button from "../../UI/Button";
+import Button from "../UI/Button";
 
 const Header = () => {
 	const heroImage = useRef(null);

@@ -1,11 +1,11 @@
 import Navigation from "./components/Navigation";
-import Header from "./components/Sections/Header";
-import ErgotherapySection from "./components/Sections/ergotherapy";
-import ConsultationSection from "./components/Sections/Consultation";
-import AboutSection from "./components/Sections/About";
-// import AppointmentSection from "./components/Sections/Appointment";
-import FundingSection from "./components/Sections/Funding";
-import Footer from "./components/Sections/Footer";
+import Header from "./components/Header";
+import ErgotherapySection from "./components/Ergotherapy";
+import ConsultationSection from "./components/Consultation";
+import AboutSection from "./components/About";
+import AppointmentSection from "./components/Appointment";
+import FundingSection from "./components/Funding";
+import Footer from "./components/Footer";
 
 export default function Home() {
 	return (
@@ -16,7 +16,7 @@ export default function Home() {
 				<ErgotherapySection />
 				<ConsultationSection />
 				<AboutSection />
-				{/* <AppointmentSection /> */}
+				<AppointmentSection />
 				<FundingSection />
 				<Footer />
 			</main>

@@ -1,4 +1,4 @@
-import CityCard from '../../UI/CityCard'
+import CityCard from '../UI/CityCard'
 import Image from 'next/image'
 
 const AppointmentSection = () => {
