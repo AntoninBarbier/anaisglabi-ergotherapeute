@@ -7,6 +7,7 @@ type ButtonProps = {
 	color?: "primary" | "green";
 	size?: "small" | "medium" | "large";
 	shape?: "normal" | "rounded";
+	target?: "_blank";
 };
 
 const baseClasses = "font-sans border tracking-[2px] md:tracking-[4px] uppercase xl:hover:text-white";
@@ -27,9 +28,9 @@ const shapeClasses: Record<Required<ButtonProps>["shape"], string> = {
 	rounded: "rounded-md",
 };
 
-const Button = ({ children, href, size = "medium", color = "primary", shape = "normal" }: ButtonProps) => {
+const Button = ({ children, href, size = "medium", color = "primary", shape = "normal", target }: ButtonProps) => {
 	return (
-		<a href={href} className='w-fit'>
+		<a href={href} className='w-fit' target={target}>
 			<button className={`${baseClasses} ${colorClasses[color]} ${sizeClasses[size]} ${shapeClasses[shape]}`}>{children}</button>
 		</a>
 	);
