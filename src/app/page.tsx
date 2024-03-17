@@ -3,7 +3,7 @@ import Header from "./components/Sections/Header";
 import ErgotherapySection from "./components/Sections/ergotherapy";
 import ConsultationSection from "./components/Sections/Consultation";
 import AboutSection from "./components/Sections/About";
-import AppointmentSection from "./components/Sections/Appointment";
+// import AppointmentSection from "./components/Sections/Appointment";
 import FundingSection from "./components/Sections/Funding";
 import Footer from "./components/Sections/Footer";
 
@@ -16,7 +16,7 @@ export default function Home() {
 				<ErgotherapySection />
 				<ConsultationSection />
 				<AboutSection />
-				<AppointmentSection />
+				{/* <AppointmentSection /> */}
 				<FundingSection />
 				<Footer />
 			</main>
