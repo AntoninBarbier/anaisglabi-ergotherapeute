@@ -1,6 +1,6 @@
 import Navigation from "./components/Navigation";
 import Header from "./components/Sections/Header";
-import ErgotherapySection from "./components/Sections/Ergotherapy";
+import ErgotherapySection from "./components/Sections/ergotherapy";
 import ConsultationSection from "./components/Sections/Consultation";
 import AboutSection from "./components/Sections/About";
 import AppointmentSection from "./components/Sections/Appointment";
