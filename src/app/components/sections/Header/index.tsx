@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import Image from "next/image";
 import Button from "../../UI/Button";
 
