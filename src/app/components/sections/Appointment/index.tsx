@@ -17,7 +17,7 @@ const AppointmentSection = () => {
 		},
 	]
 	return (
-		<section className='content-container p-4 md:p-8 mb-24' id='prendre-rendez-vous'>
+		<section className='content-container p-4 md:p-8 mb-12 md:mb-16 xl:mb-24' id='prendre-rendez-vous'>
 			<div
 				className='px-4 py-8 md:px-12 md:py-16 xl:p-24 rounded-[20px]'
 				style={{
