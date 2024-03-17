@@ -21,7 +21,7 @@ const AboutSection = () => {
 					accompagner les mamans et leur bébé dès la grossesse, et tout au long de leur allaitement. Aux cabinets, je travaille avec mes collègues Delphine Admirat, Alice Colas, Camille Grandjean, Charlène Monnin et Sarah Piron.
 				</p>
 			</div>
-			<Image src='/images/icones/ball.svg' alt='Icône ballon' width={500} height={500} className='icon absolute top-[-250px] left-[-150px] -z-10' />
+			<Image src='/images/icones/ball.svg' alt='Icône ballon' width={500} height={500} className='icon absolute top-[-250px] left-[-150px] -z-10 hidden md:block' />
 		</section>
 	);
 };

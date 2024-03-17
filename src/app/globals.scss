@@ -5,19 +5,19 @@
 /* VARIABLES */
 
 :root {
-	--icon-translation: 800px;
-}
-
-@media (min-width: 640px) {
-	:root {
-		--icon-translation: 300px;
-	}
+	--icon-translation: 300px;
 }
 
 /* GLOBAL STYLING */
 
 html {
-	scroll-padding-top: 6rem;
+	scroll-padding-top: 1rem;
+	
+	@media (min-width: theme('screens.md')) {
+		:root {
+			scroll-padding-top: 6rem;
+		}
+	}
 }
 
 body {
@@ -145,6 +145,9 @@ img {
 
 	.content-container {
 		@apply px-4 md:px-8 xl:px-36 mb-12 md:mb-28 relative;
+		@media screen and (max-width: theme("screens.md")) {
+			overflow-x: hidden;
+		}
 	}
 
 	.content-container--inner {
@@ -154,6 +157,20 @@ img {
 	.icon {
 		position: absolute;
 		max-width: 100%;
+		display: hidden;
+		z-index: -1;
+
+		@media (min-width: theme("screens.md")) {
+			display: block;
+		}
+
+		&--translation-reduced {
+			--icon-translation: 100px;
+		}
+
+		&--inverted {
+			--icon-translation: 500px;
+		}
 	}
 
 	.menu-item::after {

@@ -5,7 +5,7 @@ const ErgotherapySection = () => {
 		<section id='ergotherapie' className='content-container content-container--inner'>
 			<h2 className='title text-primary'>Qu&apos;est-ce que l&apos;ergothérapie ?</h2>
 			<div className='flex flex-col lg:flex-row items-center mt-12 gap-8 lg:gap-20'>
-				<Image src='/images/kid-playing-2.png' className='rounded-[20px] w-full md:w-3/4 lg:min-w-[450px]' alt='Enfant jouant avec un boulier' width={490} height={437} />
+				<Image src='/images/kid-playing-2.jpg' className='rounded-[20px] w-full md:w-3/4 lg:min-w-[450px]' alt='Enfant jouant avec un boulier' width={640} height={540} />
 				<p className='text-base md:text-xl font-light'>
 					L’ergothérapeute est un <strong>professionnel de santé.</strong>
 					<br />
@@ -22,9 +22,9 @@ const ErgotherapySection = () => {
 			<Image
 				src='/images/icones/puzzle.svg'
 				alt='Icône puzzle'
-				width={500}
-				height={500}
-				className='icon top-[-50px] right-[-0px] -z-10 rotate-[65deg]'
+				width={400}
+				height={400}
+				className='icon icon--translation-reduced top-[-50px] right-[-0px] -z-10 rotate-[65deg] hidden md:block'
 			/>
 		</section>
 	);

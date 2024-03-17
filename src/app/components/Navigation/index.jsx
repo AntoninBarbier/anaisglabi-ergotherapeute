@@ -11,7 +11,7 @@ const Navigation = () => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	// const isMobile = useIsMobile();
+	const isMobile = useIsMobile();
 
 	const toggleNavigation = () => {
 		setIsOpen(!isOpen);
@@ -57,7 +57,7 @@ const Navigation = () => {
 	return (
 		<>
 			<nav className={`navigation ${isSticky ? "navigation--sticky" : ""} ${isInvisible ? "navigation--invisible" : ""}`}>
-				<ul className='flex text-primary w-full justify-end md:justify-center gap-12'>
+				<ul className='text-primary w-full justify-end md:justify-center gap-12 hidden md:flex'>
 					<li className={`navigation__item ${activeItem === 0 ? "navigation__item--active" : ""}`}>
 						<a href='#accueil'>Accueil</a>
 					</li>
@@ -82,23 +82,23 @@ const Navigation = () => {
 			<div className={`navigation_side_panel ${isOpen ? "navigation_side_panel--open" : ""}`}>
 				<div className='backdrop' onClick={toggleNavigation}></div>
 				<ul className='panel'>
+					{/* <li className={`navigation__item`}>
+						<a href='#accueil' onClick={toggleNavigation}>Accueil</a>
+					</li> */}
 					<li className={`navigation__item`}>
-						<a href='#accueil'>Accueil</a>
+						<a href='#ergotherapie' onClick={toggleNavigation}>L&apos;ergothérapie</a>
 					</li>
 					<li className={`navigation__item`}>
-						<a href='#ergotherapie'>L&apos;ergothérapie</a>
+						<a href='#pour-qui' onClick={toggleNavigation}>Pour qui ?</a>
 					</li>
 					<li className={`navigation__item`}>
-						<a href='#pour-qui'>Pour qui ?</a>
+						<a href='#qui-suis-je' onClick={toggleNavigation}>Qui suis-je ?</a>
 					</li>
 					<li className={`navigation__item`}>
-						<a href='#qui-suis-je'>Qui suis-je ?</a>
+						<a href='#prendre-rendez-vous' onClick={toggleNavigation}>Prendre rendez-vous</a>
 					</li>
 					<li className={`navigation__item`}>
-						<a href='#prendre-rendez-vous'>Prendre rendez-vous</a>
-					</li>
-					<li className={`navigation__item`}>
-						<a href='#financements'>Financements</a>
+						<a href='#financements' onClick={toggleNavigation}>Financements</a>
 					</li>
 				</ul>
 			</div>

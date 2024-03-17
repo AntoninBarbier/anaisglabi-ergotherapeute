@@ -36,7 +36,7 @@ const AppointmentSection = () => {
 						/>
 						<div className='w-[25%] lg:w-[2px] h-[2px] lg:h-[250px] bg-green'></div>
 						<CityCard
-							city='Champagne au Mont d’Or'
+							city='Champagne-au-Mont-d’Or'
 							firstLink='http://google.com'
 							secondLink='http://google.com'
 							address='7 Rue Dominique Vincent, 69410'
