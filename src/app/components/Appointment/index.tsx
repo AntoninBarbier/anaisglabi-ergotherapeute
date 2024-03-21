@@ -30,7 +30,7 @@ const AppointmentSection = () => {
 						<CityCard
 							city='Lyon'
 							firstLink='https://www.doctolib.fr/ergotherapeute/lyon/anais-glabi-charlene-monnin-cabinet-d-ergotherapie'
-							secondLink='http://google.com'
+							secondLink='https://docorga.com/praticien/5c880dc14a7124f3293bd25f'
 							address='7 Rue Antoine Barbier, 69006 Lyon'
 							mapCenterCoordinates={[45.7715, 4.86036]}
 						/>
@@ -38,7 +38,7 @@ const AppointmentSection = () => {
 						<CityCard
 							city='Champagne-au-Mont-d’Or'
 							firstLink='https://www.doctolib.fr/ergotherapeute/lyon/anais-glabi-charlene-monnin-cabinet-d-ergotherapie/booking/motives?specialityId=398&telehealth=false&placeId=practice-278026&profile_skipped=true&bookingFunnelSource=external_referral'
-							secondLink='http://google.com'
+							secondLink='https://docorga.com/praticien/5c880dc14a7124f3293bd25f'
 							address='7 Rue Dominique Vincent, 69410'
 							mapCenterCoordinates={[45.7984, 4.7927]}
 						/>

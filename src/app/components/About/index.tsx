@@ -9,11 +9,11 @@ const AboutSection = () => {
 				<div className='flex flex-col gap-5'>
 					<Image src='/images/anais-glabi-ergotherapeute.jpg' className='rounded-[50%] w-3/4  md:w-full lg:w-1/2 m-auto lg:min-w-[450px]' alt='Anaïs Glabi | Ergothérapeute' width={500} height={500} />
 					<p className='text-primary font-black text-center text-2xl'>Anaïs Glabi-Mus</p>
-					<p className='text-xl text-secondary text-center font-light italic px-10'>Ergothérapeute D.E. diplômée de l’ISTR de Lyon en juin 2018</p>
+					<p className='text-xl text-secondary text-center font-light italic px-10'>Ergothérapeute D.E.</p>
 				</div>
 				<p className='text-base md:text-xl font-light'>
-					Je me suis dans un premier temps formée à l’accompagnement des enfants ayant des troubles des apprentissages, et à la rééducation de la motricité fine en pédiatrie (2019). En 2020, j’ai obtenu le diplôme universitaire de neuropsychopathologie des apprentissages scolaires à la
-					faculté de médecine de Lyon I. Pour compléter cette formation, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
+					Diplômée de l’ISTR de Lyon en juin 2018, je me suis dans un premier temps formée à l’accompagnement des enfants ayant des troubles des apprentissages, et à la rééducation de la motricité fine en pédiatrie (2019). En 2020, j’ai obtenu le Diplôme Universitaire de Neuropsychopathologie des Apprentissages Scolaires à la
+					Faculté de Médecine de Lyon I. Pour compléter cette formation, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
 					<br />
 					<br />
 					Devenir maman a changé ma façon d’exercer et mon regard sur mes accompagnements: travailler avec les tous petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
