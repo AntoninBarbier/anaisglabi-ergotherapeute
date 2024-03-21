@@ -8,7 +8,7 @@ const AboutSection = () => {
 			<div className='flex flex-col xl:flex-row items-center mt-12 gap-8 lg:gap-20'>
 				<div className='flex flex-col gap-5'>
 					<Image src='/images/anais-glabi-ergotherapeute.jpg' className='rounded-[50%] w-3/4  md:w-full lg:w-1/2 m-auto lg:min-w-[450px]' alt='Anaïs Glabi | Ergothérapeute' width={500} height={500} />
-					<p className='text-primary font-black text-center text-2xl'>Anaïs Glabi</p>
+					<p className='text-primary font-black text-center text-2xl'>Anaïs Glabi-Mus</p>
 					<p className='text-xl text-secondary text-center font-light italic px-10'>Ergothérapeute D.E. diplômée de l’ISTR de Lyon en juin 2018</p>
 				</div>
 				<p className='text-base md:text-xl font-light'>

@@ -13,10 +13,10 @@ const Header = () => {
 			<div className={`${styles.inner} rounded-[20px] size-full px-12 lg:px-28 flex items-center`}>
 				<div className='w-full flex justify-between items-center gap-12 max-w-screen-xl 3xl:m-auto'>
 					<div className='h-full flex flex-col justify-around gap-12'>
-						<h1 className='title text-4xl xl:text-5xl font-black'>
-							Anaïs Glabi • Ergothérapeute
+						<h1 className='title text-4xl font-black'>
+							Anaïs Glabi-Mus • Ergothérapeute
 							<br />
-							<span className='text-2xl lg:text-4xl font-normal italic'>spécialisée en pédiatrie</span>
+							<span className='text-2xl lg:text-2xl font-normal italic'>spécialisée en pédiatrie</span>
 						</h1>
 						<h2 className='text-xl font-normal'>À Lyon et Champagne-au-Mont-d&apos;Or</h2>
 						<Button href='#prendre-rendez-vous'>Prendre rendez-vous</Button>
