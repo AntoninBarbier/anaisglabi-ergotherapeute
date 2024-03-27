@@ -29,7 +29,7 @@ const AppointmentSection = () => {
 					<div className='flex flex-col gap-12 lg:flex-row justify-between items-center mb-12 lg:mb-32'>
 						<CityCard
 							city='Lyon'
-							firstLink='https://www.doctolib.fr/ergotherapeute/lyon/anais-glabi-charlene-monnin-cabinet-d-ergotherapie'
+							firstLink='https://www.doctolib.fr/ergotherapeute/lyon/anais-glabi-charlene-monnin-cabinet-d-ergotherapie/booking/motives?specialityId=398&telehealth=false&placeId=practice-104929&profile_skipped=true&bookingFunnelSource=external_referral'
 							secondLink='https://docorga.com/praticien/5c880dc14a7124f3293bd25f'
 							address='7 Rue Antoine Barbier, 69006 Lyon'
 							mapCenterCoordinates={[45.7715, 4.86036]}

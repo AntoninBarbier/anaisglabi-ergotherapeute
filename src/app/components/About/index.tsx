@@ -13,7 +13,7 @@ const AboutSection = () => {
 				</div>
 				<p className='text-base md:text-xl font-light'>
 					Diplômée de l’ISTR de Lyon en juin 2018, je me suis dans un premier temps formée à l’accompagnement des enfants ayant des troubles des apprentissages, et à la rééducation de la motricité fine en pédiatrie (2019). En 2020, j’ai obtenu le Diplôme Universitaire de Neuropsychopathologie des Apprentissages Scolaires à la
-					Faculté de Médecine de Lyon I. Pour compléter cette enseignement, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
+					Faculté de Médecine de Lyon I. Pour compléter cet enseignement, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
 					<br />
 					<br />
 					Devenir maman a changé ma façon d’exercer et mon regard sur mes suivis: travailler avec les tout-petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
