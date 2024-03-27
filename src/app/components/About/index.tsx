@@ -13,12 +13,12 @@ const AboutSection = () => {
 				</div>
 				<p className='text-base md:text-xl font-light'>
 					Diplômée de l’ISTR de Lyon en juin 2018, je me suis dans un premier temps formée à l’accompagnement des enfants ayant des troubles des apprentissages, et à la rééducation de la motricité fine en pédiatrie (2019). En 2020, j’ai obtenu le Diplôme Universitaire de Neuropsychopathologie des Apprentissages Scolaires à la
-					Faculté de Médecine de Lyon I. Pour compléter cette formation, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
+					Faculté de Médecine de Lyon I. Pour compléter cette enseignement, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
 					<br />
 					<br />
-					Devenir maman a changé ma façon d’exercer et mon regard sur mes accompagnements: travailler avec les tous petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
+					Devenir maman a changé ma façon d’exercer et mon regard sur mes suivis: travailler avec les tout-petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
 					Ruffier-Bourdet, puis aux difficultés alimentaires du bébé et leur accompagnement en ergothérapie. Cette année 2024, j’aspire à devenir consultante en lactation IBCLC, je me forme donc actuellement en vue de passer cette certification qui viendra compléter mon parcours pour
-					accompagner les mamans et leur bébé dès la grossesse, et tout au long de leur allaitement. Aux cabinets, je travaille avec mes collègues Delphine Admirat, Alice Colas, Camille Grandjean, Charlène Monnin et Sarah Piron.
+					guider les mamans et leur bébé dès la grossesse, et tout au long de leur allaitement. Aux cabinets, je travaille avec mes collègues Delphine Admirat, Alice Colas, Camille Grandjean, Charlène Monnin et Sarah Piron.
 				</p>
 			</div>
 			<Image src='/images/icones/ball.svg' alt='Icône ballon' width={500} height={500} className='icon absolute top-[-250px] left-[-150px] -z-10 hidden md:block' />

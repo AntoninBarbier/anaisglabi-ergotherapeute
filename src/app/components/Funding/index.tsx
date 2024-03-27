@@ -5,11 +5,11 @@ const FundingSection = () => {
 		{ text: "Financement par votre mutuelle", color: "#EDF8C9" },
 		{ text: "Demande de prestation extra-légale aurpès de la sécurité sociale", color: "#F9F8DE" },
 		{
-			text: "Financement par la maison départementale des personnes handicapées (MDPH) via l’Allocation Education Enfant Handicapé (AEEH)",
+			text: "Financement par la Maison Départementale des Personnes Handicapées (MDPH) via l’Allocation Education Enfant Handicapé (AEEH)",
 			color: "#FFF5E5",
 		},
-		{ text: "Financement par les plateformes de coordination et d’orientation (PCO)", color: "#FFE9E2" },
-		{ text: "Financement par les Pôles de Compétences et de prestations externalisées (PCPE)", color: "#FFE4E2" },
+		{ text: "Financement par les Plateformes de Coordination et d’Orientation (PCO)", color: "#FFE9E2" },
+		{ text: "Financement par les Pôles de Compétences et de Prestations Externalisées (PCPE)", color: "#FFE4E2" },
 	];
 
 	const services = [

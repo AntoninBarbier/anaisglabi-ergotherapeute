@@ -157,7 +157,7 @@ img {
 	.icon {
 		position: absolute;
 		max-width: 100%;
-		display: hidden;
+		display: none;
 		z-index: -1;
 
 		@media (min-width: theme("screens.md")) {
