@@ -16,7 +16,7 @@ const Header = () => {
 						<h1 className='title text-3xl md:text-4xl font-black'>
 							Anaïs Glabi-Mus <span className="hidden md:inline">•</span> Ergothérapeute
 							<br />
-							<span className='text-xl md:text-2xl font-normal italic'>Spécialisée en pédiatrie - troubles de l&apos;alimentation - conseil en lactation</span>
+							<span className='text-xl md:text-2xl font-normal italic'>Ergothérapeute et consultante en lactation certifiée IBCLC<br/>Spécialisée en pédiatrie et en lactation humaine à Lyon et dans l’ouest Lyonnais.</span>
 						</h1>
 						<h2 className='text-xl font-normal'>À Lyon et Champagne-au-Mont-d&apos;Or</h2>
 						<Button href='#prendre-rendez-vous'>Prendre rendez-vous</Button>

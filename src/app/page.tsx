@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import ErgotherapySection from "./components/Ergotherapy";
+import IBCLCSection from "./components/IBCLC";
 import ConsultationSection from "./components/Consultation";
 import AboutSection from "./components/About";
 import AppointmentSection from "./components/Appointment";
@@ -14,6 +15,7 @@ export default function Home() {
 			<Header />
 			<main>
 				<ErgotherapySection />
+				<IBCLCSection />
 				<ConsultationSection />
 				<AboutSection />
 				<AppointmentSection />

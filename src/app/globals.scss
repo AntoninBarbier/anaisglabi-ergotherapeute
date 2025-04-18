@@ -138,6 +138,18 @@ img {
 	max-width: 100%;
 }
 
+ul.list {
+	list-style-type: circle;
+	list-style-position: inside;
+	li {
+		margin-bottom: 20px;
+
+		&::marker {
+			color: theme('colors.primary');
+		}
+	}	
+}
+
 @layer components {
 	.title {
 		@apply text-2xl md:text-4xl lg:text-5xl font-bold tracking-[-2px] leading-[3rem];

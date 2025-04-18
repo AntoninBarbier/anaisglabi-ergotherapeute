@@ -65,15 +65,18 @@ const Navigation = () => {
 						<a href='#ergotherapie'>L&apos;ergothérapie</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 2 ? "navigation__item--active" : ""}`}>
-						<a href='#pour-qui'>Pour qui ?</a>
+						<a href='#ergotherapie'>Lactation IBCLC</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 3 ? "navigation__item--active" : ""}`}>
-						<a href='#qui-suis-je'>Qui suis-je ?</a>
+						<a href='#pour-qui'>Pour qui ?</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 4 ? "navigation__item--active" : ""}`}>
-						<a href='#prendre-rendez-vous'>Prendre rendez-vous</a>
+						<a href='#qui-suis-je'>Qui suis-je ?</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 5 ? "navigation__item--active" : ""}`}>
+						<a href='#prendre-rendez-vous'>Prendre rendez-vous</a>
+					</li>
+					<li className={`navigation__item ${activeItem === 6 ? "navigation__item--active" : ""}`}>
 						<a href='#financements'>Financements</a>
 					</li>
 				</ul>

@@ -3,7 +3,7 @@ import Image from "next/image";
 const FundingSection = () => {
 	const tags = [
 		{ text: "Financement par votre mutuelle", color: "#EDF8C9" },
-		{ text: "Demande de prestation extra-légale aurpès de la sécurité sociale", color: "#F9F8DE" },
+		{ text: "Demande de prestation extra-légale auprès de la sécurité sociale", color: "#F9F8DE" },
 		{
 			text: "Financement par la Maison Départementale des Personnes Handicapées (MDPH) via l’Allocation Education Enfant Handicapé (AEEH)",
 			color: "#FFF5E5",
@@ -13,10 +13,10 @@ const FundingSection = () => {
 	];
 
 	const services = [
-		{ label: "Bilan d’ergothérapie", price: 180 },
-		{ label: "Consultation alimentation", price: 60 },
+		{ label: "Bilan d’ergothérapie", price: 170 },
+		{ label: "Consultation alimentation ou allaitement", price: 60 },
 		{ label: "Séance d’ergothérapie au cabinet (45 minutes)", price: 45 },
-		{ label: "Séance à domicile ou à l’école (45 minutes)", price: 55 },
+		{ label: "Séance d’ergothérapie à domicile ou à l’école (45 minutes)", price: 55 },
 	];
 	return (
 		<section id='financements' className='content-container content-container--inner'>

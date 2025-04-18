@@ -8,15 +8,25 @@ const ConsultationSection = () => {
 				<h2 className='title text-primary'>Pour qui ?</h2>
 				<div className='mt-12'>
 					<p className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16'>Deux cabinets à <strong>Lyon</strong> et <strong>Champagne-au-Mont-d’Or</strong>, et une équipe de plusieurs ergothérapeutes diplômées d’Etat avec différentes spécialités pour mieux répondre à vos besoins:</p>
-					<ul className={`text-base md:text-xl font-light ${styles.motives_list}`}>
-						<li>Troubles de l’alimentation: bébé/enfant qui a des difficultés pour s’alimenter, difficultés lors de la diversification alimentaire, refus de certaines textures, panel alimentaire restreint, sélectivité des aliments etc.</li>
-						<li>Aide à la mise en place de l’allaitement et accompagnement des éventuelles difficultés: Difficultés de début d’allaitement, difficultés de mise au sein / positionnement, difficulté de passage au biberon, sevrage</li>
+					<ul className={`text-base md:text-xl font-light list`}>
+						<li>Troubles de l’alimentation: bébé/enfant qui a des difficultés pour s’alimenter, refuse certaines textures, panel alimentaire restreint, sélectionne des aliments etc.</li>
+						<li>Aide à la mise en place de l’allaitement et accompagnement des éventuelles difficultés : Difficultés de début d’allaitement, difficultés de mise au sein, difficulté de passage au biberon, sevrage</li>
 						<li>Troubles des apprentissages</li>
 						<li>Troubles praxiques, graphiques: douleurs, lenteur d’écriture</li> 
 						<li>Difficultés sensorielles, retard sensori-moteur</li>
 						<li>Troubles du spectre de l’autisme</li>
 						<li>Faible autonomie dans les activités du quotidien, à la maison et/ou à l’école</li>
 					</ul>
+					<p className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16'>En tant que consultante en lactation IBCLC, je propose:</p>
+					<ul className={`text-base md:text-xl font-light list`}>
+						<li>
+							Des consultations d’accompagnement à l’allaitement à domicile ou au cabinet
+						</li>
+						<li>
+							Des séances d’information sur l’allaitement pendant la grossesse 
+						</li>
+					</ul>
+					<p className='text-base md:text-xl font-light mt-16'>Ma spécificité est d’être à la fois ergothérapeute spécialisée en trouble de l’alimentation en pédiatrie, et consultante en lactation IBCLC. Je suis donc en mesure d’accompagner les mamans et leur bébé dans une vision globale, et ce depuis la grossesse, jusqu’au sevrage naturel.</p>
 				</div>
 				<Image
 				src='/images/icones/pacifier.svg'
