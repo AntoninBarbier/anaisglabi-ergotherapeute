@@ -3,7 +3,7 @@ import Image from "next/image";
 const IBCLCSection = () => {
 	return (
 		<section id='ibcl' className='content-container content-container--inner'>
-			<h2 className='title text-primary'>Qu'est ce qu'un consultant en lactation IBCLC ?</h2>
+			<h2 className='title text-primary'>Qu&apos;est ce qu&apos;un consultant en lactation IBCLC ?</h2>
 			<div className='flex flex-col lg:flex-row items-center mt-12 gap-8 lg:gap-20'>
 				<p className='text-base md:text-xl font-light'>
 					Un consultant en lactation IBCLC est un professionnel de santé spécialiste de l’allaitement maternel et de la lactation humaine. Une formation approfondie permet d’accompagner et de résoudre la plupart des problèmes d’allaitement. Un consultant en lactation a une capacité
