@@ -17,7 +17,7 @@ const source_sans_3 = Source_Sans_3({
 
 export const metadata: Metadata = {
 	title: 'Ergothérapeute à Lyon | Anaïs Glabi',
-	description: "Ergothérapeute spécialisée en pédiatrie basée à Lyon et Champagne-au-Mont-d'Or",
+	description: "Ergothérapeute et consultante en lactation certifiée IBCLC. Spécialisée en pédiatrie et en lactation humaine à Lyon et dans l’ouest Lyonnais.",
 }
 
 export default function RootLayout({
