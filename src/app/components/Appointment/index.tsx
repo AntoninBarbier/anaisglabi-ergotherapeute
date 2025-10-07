@@ -50,8 +50,8 @@ const AppointmentSection = () => {
 								key={contact.label}
 							>
 								<Image className='w-[60px] md:w-[100px]' src={contact.icon} width={200} height={200} alt={contact.alt} />
-								<a href={contact.type === 'phone' ? `tel:${contact.label}` : `mailto:${contact.label}`}>
-									<p className='text-green text-2xl lg:text-5xl font-semibold'>{contact.label}</p>
+								<a href={contact.type === 'phone' ? `tel:${contact.label}` : `mailto:${contact.label}`} className='hover:underline text-green text-2xl lg:text-5xl font-semibold'>
+									{contact.label}
 								</a>
 							</div>
 						))}

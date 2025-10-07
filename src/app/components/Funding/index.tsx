@@ -13,10 +13,10 @@ const FundingSection = () => {
 	];
 
 	const services = [
-		{ label: "Bilan d’ergothérapie", price: 180 },
-		{ label: "Consultation alimentation ou allaitement", price: 60 },
-		{ label: "Séance d’ergothérapie au cabinet (45 minutes)", price: 45 },
-		{ label: "Séance d’ergothérapie à domicile ou à l’école (45 minutes)", price: 55 },
+		{ label: "Bilan d’ergothérapie", price: 190 },
+		{ label: "Consultation alimentation ou allaitement", price: 70 },
+		{ label: "Séance d’ergothérapie au cabinet (45 minutes)", price: 48 },
+		{ label: "Séance d’ergothérapie à domicile ou à l’école (45 minutes)", price: 58 },
 	];
 	return (
 		<section id='financements' className='content-container content-container--inner'>

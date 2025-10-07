@@ -7,7 +7,7 @@ const AboutSection = () => {
 			<p className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16'>Spécialisée en pédiatrie, j’accompagne les enfants tout au long de leur développement, de la naissance jusqu’aux études supérieures.<br/>Dans mon activité de consultante en lactation, j’accompagne les parents et leur bébé dans leur aventure d’allaitement, de la grossesse jusqu’au sevrage.</p>
 			<div className='flex flex-col xl:flex-row items-center mt-12 gap-8 lg:gap-20'>
 				<div className='flex flex-col gap-5'>
-					<Image src='/images/anais-glabi-ergotherapeute.jpg' className='rounded-[50%] w-3/4  md:w-full lg:w-1/2 m-auto lg:min-w-[450px]' alt='Anaïs Glabi | Ergothérapeute' width={500} height={500} />
+ 					<Image src='/images/anais-glabi-ergotherapeute.jpg' className='rounded-[50%] w-3/4  md:w-full lg:w-1/2 m-auto lg:min-w-[450px] border-2 border-primary' alt='Anaïs Glabi | Ergothérapeute' width={500} height={500} />
 					<p className='text-primary font-black text-center text-2xl'>Anaïs Glabi-Mus</p>
 					<p className='text-xl text-secondary text-center font-light italic px-10'>Ergothérapeute D.E.</p>
 				</div>
