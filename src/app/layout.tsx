@@ -16,7 +16,7 @@ const source_sans_3 = Source_Sans_3({
 })
 
 export const metadata: Metadata = {
-	title: 'Ergothérapeute à Lyon | Anaïs Glabi',
+	title: 'Ergothérapeute et consultante en lactation IBCLC à Lyon | Anaïs Glabi',
 	description: "Ergothérapeute et consultante en lactation certifiée IBCLC. Spécialisée en pédiatrie et en lactation humaine à Lyon et dans l’ouest Lyonnais.",
 }
 
