@@ -1,5 +1,6 @@
 $burger-width: 25px;
-$burger-wrapper-dimension: 25px;
+// 44px touch target (WCAG 2.5.5), lines stay 25px wide
+$burger-wrapper-dimension: 44px;
 $burger-lines-stroke: 2px;
 $burger-lines-distance: 6px;
 $burger-height: 3 * $burger-lines-stroke + 2 * $burger-lines-distance;
@@ -15,10 +16,16 @@ $burger-lines-distance: 4px;
 	width: $burger-wrapper-dimension;
 	height: $burger-wrapper-dimension;
 	position: absolute;
-	right: 3rem;
-	top: 3rem;
+	right: calc(3rem - ($burger-wrapper-dimension - $burger-width) / 2);
+	top: calc(3rem - ($burger-wrapper-dimension - $burger-width) / 2);
 	z-index: 200;
 	transition: transform 0.2s;
+	cursor: pointer;
+
+	&:focus-visible {
+		outline: 2px solid $burger-color;
+		outline-offset: 2px;
+	}
 
 	@media (min-width: theme("screens.md")) {
 		display: none;

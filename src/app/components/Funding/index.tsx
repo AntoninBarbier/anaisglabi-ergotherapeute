@@ -20,16 +20,16 @@ const FundingSection = () => {
 	];
 	return (
 		<section id='financements' className='content-container content-container--inner'>
-			<Image src='/images/icones/document.svg' alt='Icône document' width={400} height={400} className='icon absolute w-[300px] md:w-[400px] top-[-500px] md:top-[-150px] right-0 transform rotate-12 translate-x-[30px] -z-10' />
+			<Image src='/images/icones/document.svg' alt='' width={400} height={400} className='icon absolute w-[300px] md:w-[400px] top-[-500px] md:top-[-150px] right-0 transform rotate-12 translate-x-[30px] -z-10' />
 			<h2 className='title text-green mb-8 md:mb-12'>Honoraires et financements</h2>
 			<p className='mb-8 md:mb-12 text-base md:text-xl font-light'>L’ergothérapie est une profession de santé non remboursée par la sécurité sociale. Cependant, des aides existent et peuvent être mises en place :</p>
-			<div className='flex flex-wrap gap-5 mb-16'>
+			<ul className='flex flex-wrap gap-5 mb-16'>
 				{tags.map((tag, index) => (
-					<div key={`funding-tag-${index}`} style={{ backgroundColor: tag.color }} className='p-2 md:p-4 rounded-[10px] font-light'>
+					<li key={`funding-tag-${index}`} style={{ backgroundColor: tag.color }} className='p-2 md:p-4 rounded-[10px] font-light'>
 						{tag.text}
-					</div>
+					</li>
 				))}
-			</div>
+			</ul>
 			<h3 className='title text-primary text-center text-2xl xl:text-3xl mb-8 md:mb-12'>Les tarifs au cabinet</h3>
 			<div className='grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12'>
 				{services.map((service, index) => (

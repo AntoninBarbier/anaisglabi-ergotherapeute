@@ -11,13 +11,8 @@
 /* GLOBAL STYLING */
 
 html {
-	scroll-padding-top: 1rem;
-	
-	@media (min-width: theme('screens.md')) {
-		:root {
-			scroll-padding-top: 6rem;
-		}
-	}
+	// Clears the sticky desktop menu (80px) and the fixed mobile burger
+	scroll-padding-top: 6rem;
 }
 
 body {

@@ -7,13 +7,11 @@ const AppointmentSection = () => {
 			type: 'phone',
 			label: '06 66 95 05 34',
 			icon: '/images/icones/phone.svg',
-			alt: 'Icône téléphone',
 		},
 		{
 			type: 'mail',
 			label: 'glabi.anais@gmail.com',
 			icon: '/images/icones/mail.svg',
-			alt: 'Icône email',
 		},
 	]
 	return (
@@ -49,7 +47,7 @@ const AppointmentSection = () => {
 								className='w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-16'
 								key={contact.label}
 							>
-								<Image className='w-[60px] md:w-[100px]' src={contact.icon} width={200} height={200} alt={contact.alt} />
+								<Image className='w-[60px] md:w-[100px]' src={contact.icon} width={200} height={200} alt='' />
 								<a href={contact.type === 'phone' ? `tel:${contact.label}` : `mailto:${contact.label}`} className='hover:underline text-green text-2xl lg:text-5xl font-semibold'>
 									{contact.label}
 								</a>

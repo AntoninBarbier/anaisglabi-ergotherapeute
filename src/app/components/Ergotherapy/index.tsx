@@ -21,7 +21,7 @@ const ErgotherapySection = () => {
 			</div>
 			<Image
 				src='/images/icones/puzzle.svg'
-				alt='Icône puzzle'
+				alt=''
 				width={400}
 				height={400}
 				className='icon icon--translation-reduced top-[-50px] right-[-0px] -z-10 rotate-[65deg] hidden md:block'
