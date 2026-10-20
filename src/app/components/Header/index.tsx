@@ -1,12 +1,16 @@
-"use client";
-
-import { useRef } from "react";
+import { preload } from "react-dom";
+import { getImageProps } from "next/image";
 import styles from "./styles.module.scss";
-import Image from "next/image";
 import Button from "../UI/Button";
 
+// The hero picture is hidden on mobile: preload it for tablet/desktop only,
+// so phones do not download it ahead of the title.
+const HERO_MEDIA = "(min-width: 768px)";
+
 const Header = () => {
-	const heroImage = useRef(null);
+	const { props: heroImage } = getImageProps({ src: "/images/kid-playing.jpg", width: 450, height: 540, alt: "Enfant qui joue", sizes: "450px" });
+
+	preload(heroImage.src, { as: "image", imageSrcSet: heroImage.srcSet, imageSizes: heroImage.sizes, fetchPriority: "high", media: HERO_MEDIA });
 
 	return (
 		<header id='accueil' className='text-primary h-screen p-4 md:p-8 mb-12 md:mb-24'>
@@ -22,7 +26,8 @@ const Header = () => {
 						<Button href='#prendre-rendez-vous'>Prendre rendez-vous</Button>
 					</div>
 					<div className='hidden md:block'>
-						<Image src='/images/kid-playing.jpg' width={450} height={540} alt='Enfant qui joue' className='rounded-[20px]' ref={heroImage} priority />
+						{/* eslint-disable-next-line @next/next/no-img-element -- optimized src/srcSet come from getImageProps */}
+						<img {...heroImage} alt={heroImage.alt} className='rounded-[20px]' loading='lazy' fetchPriority='high' />
 					</div>
 				</div>
 			</div>
