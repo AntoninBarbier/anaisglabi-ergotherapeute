@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useIsMobile from "@/app/hooks/useIsMobile";
 import Burger from "../UI/Burger";
 
 const Navigation = () => {
@@ -10,8 +9,6 @@ const Navigation = () => {
 	const [isSticky, setIsSticky] = useState(false);
 
 	const [isOpen, setIsOpen] = useState(false);
-
-	const isMobile = useIsMobile();
 
 	const toggleNavigation = () => {
 		setIsOpen(!isOpen);
