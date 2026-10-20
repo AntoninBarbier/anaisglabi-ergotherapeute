@@ -1,22 +1,31 @@
+import { Ref } from "react";
 import styles from "./style.module.scss";
-import { useState } from "react";
 
 type BurgerProps = {
 	onClick: () => void;
 	isOpen: boolean;
 	isSticky: boolean;
 	isInvisible: boolean;
+	ref?: Ref<HTMLButtonElement>;
 };
 
-const Burger = ({ onClick, isOpen = false, isSticky = false, isInvisible = false }: BurgerProps) => {
+const Burger = ({ onClick, isOpen = false, isSticky = false, isInvisible = false, ref }: BurgerProps) => {
 	return (
-		<li className={`${styles.burger} ${isOpen ? styles["burger--open"] : ""} ${isSticky ? styles["burger--sticky"] : ""} ${isInvisible ? styles["burger--invisible"] : ""}`} onClick={onClick}>
-			<div>
+		<button
+			ref={ref}
+			type='button'
+			aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+			aria-expanded={isOpen}
+			aria-controls='mobile-menu'
+			className={`${styles.burger} ${isOpen ? styles["burger--open"] : ""} ${isSticky ? styles["burger--sticky"] : ""} ${isInvisible ? styles["burger--invisible"] : ""}`}
+			onClick={onClick}
+		>
+			<div aria-hidden='true'>
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
-		</li>
+		</button>
 	);
 };
 

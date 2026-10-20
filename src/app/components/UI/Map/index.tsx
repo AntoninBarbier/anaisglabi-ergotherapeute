@@ -15,7 +15,7 @@ const Map = ({ lat, lng }: MapProps) => {
 		const initizalizeMap = async () => {
 			const loader = new Loader({
 				apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
-				version: 'quartely',
+				version: 'quarterly',
 			})
 
 			const { Map } = await loader.importLibrary('maps')

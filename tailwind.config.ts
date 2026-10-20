@@ -6,8 +6,8 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: '#B42A64',
-				secondary: '#D84D4D',
-				green: '#6AAE9E',
+				secondary: '#D54040',
+				green: '#407568',
 				yellow: '#FFF5E5',
 			},
 			screens: {
