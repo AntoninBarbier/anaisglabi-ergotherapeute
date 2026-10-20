@@ -24,12 +24,13 @@ body {
 	left: 50%;
 	transform: translateX(-50%);
 	right: 1rem;
-	width: 80%;
+	width: 90%;
 	top: 5rem;
 	display: none;
 	transition: none;
 
-	@media screen and (min-width: theme("screens.md")) {
+	// The 7 links only fit on one line from lg: tablets use the burger menu
+	@media screen and (min-width: theme("screens.lg")) {
 		display: block;
 	}
 
@@ -44,7 +45,7 @@ body {
 		width: 100%;
 		transform: none;
 		left: 0;
-		@media screen and (min-width: theme("screens.md")) {
+		@media screen and (min-width: theme("screens.lg")) {
 			background-color: white;
 		}
 	}
@@ -74,7 +75,7 @@ body {
 
 // Mobile navigation side panel
 .navigation_side_panel {
-	@media (min-width: theme("screens.md")) {
+	@media (min-width: theme("screens.lg")) {
 		display: none;
 	}
 	.backdrop {
