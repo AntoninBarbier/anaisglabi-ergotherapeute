@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Burger from "../UI/Burger";
 
 const Navigation = () => {
@@ -10,9 +10,41 @@ const Navigation = () => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
+	const burgerRef = useRef(null);
+	const firstLinkRef = useRef(null);
+
 	const toggleNavigation = () => {
-		setIsOpen(!isOpen);
+		setIsOpen((open) => !open);
 	};
+
+	const closeNavigation = () => {
+		setIsOpen(false);
+	};
+
+	// Mobile menu behaves like a modal: page content is inert while it is open,
+	// focus moves into the menu, and Escape closes it.
+	useEffect(() => {
+		const pageContent = document.querySelectorAll("header, main");
+		pageContent.forEach((element) => (element.inert = isOpen));
+
+		if (!isOpen) return;
+
+		firstLinkRef.current?.focus();
+
+		const handleKeyDown = (event) => {
+			if (event.key === "Escape") {
+				setIsOpen(false);
+				burgerRef.current?.focus();
+			}
+		};
+
+		document.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+			pageContent.forEach((element) => (element.inert = false));
+		};
+	}, [isOpen]);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -53,7 +85,7 @@ const Navigation = () => {
 	}, [isSticky, isInvisible]);
 	return (
 		<>
-			<nav className={`navigation ${isSticky ? "navigation--sticky" : ""} ${isInvisible ? "navigation--invisible" : ""}`}>
+			<nav aria-label='Menu principal' className={`navigation ${isSticky ? "navigation--sticky" : ""} ${isInvisible ? "navigation--invisible" : ""}`}>
 				<ul className='text-primary w-full justify-end md:justify-center gap-12 hidden md:flex'>
 					<li className={`navigation__item ${activeItem === 0 ? "navigation__item--active" : ""}`}>
 						<a href='#accueil'>Accueil</a>
@@ -78,29 +110,31 @@ const Navigation = () => {
 					</li>
 				</ul>
 			</nav>
-			<Burger onClick={toggleNavigation} isOpen={isOpen} isSticky={isSticky} isInvisible={isInvisible} />
+			<Burger ref={burgerRef} onClick={toggleNavigation} isOpen={isOpen} isSticky={isSticky} isInvisible={isInvisible} />
 			<div className={`navigation_side_panel ${isOpen ? "navigation_side_panel--open" : ""}`}>
-				<div className='backdrop' onClick={toggleNavigation}></div>
-				<ul className='panel'>
-					{/* <li className={`navigation__item`}>
-						<a href='#accueil' onClick={toggleNavigation}>Accueil</a>
-					</li> */}
-					<li className={`navigation__item`}>
-						<a href='#ergotherapie' onClick={toggleNavigation}>L&apos;ergothérapie</a>
-					</li>
-					<li className={`navigation__item`}>
-						<a href='#pour-qui' onClick={toggleNavigation}>Pour qui ?</a>
-					</li>
-					<li className={`navigation__item`}>
-						<a href='#qui-suis-je' onClick={toggleNavigation}>Qui suis-je ?</a>
-					</li>
-					<li className={`navigation__item`}>
-						<a href='#prendre-rendez-vous' onClick={toggleNavigation}>Prendre rendez-vous</a>
-					</li>
-					<li className={`navigation__item`}>
-						<a href='#financements' onClick={toggleNavigation}>Financements</a>
-					</li>
-				</ul>
+				<div className='backdrop' aria-hidden='true' onClick={closeNavigation}></div>
+				<nav id='mobile-menu' aria-label='Menu principal' inert={!isOpen}>
+					<ul className='panel'>
+						<li className={`navigation__item`}>
+							<a href='#ergotherapie' onClick={closeNavigation} ref={firstLinkRef}>L&apos;ergothérapie</a>
+						</li>
+						<li className={`navigation__item`}>
+							<a href='#ibcl' onClick={closeNavigation}>Lactation IBCLC</a>
+						</li>
+						<li className={`navigation__item`}>
+							<a href='#pour-qui' onClick={closeNavigation}>Pour qui ?</a>
+						</li>
+						<li className={`navigation__item`}>
+							<a href='#qui-suis-je' onClick={closeNavigation}>Qui suis-je ?</a>
+						</li>
+						<li className={`navigation__item`}>
+							<a href='#prendre-rendez-vous' onClick={closeNavigation}>Prendre rendez-vous</a>
+						</li>
+						<li className={`navigation__item`}>
+							<a href='#financements' onClick={closeNavigation}>Financements</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</>
 	);

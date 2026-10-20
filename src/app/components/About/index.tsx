@@ -16,13 +16,13 @@ const AboutSection = () => {
 					Faculté de Médecine de Lyon I. Pour compléter cet enseignement, je me suis aussi formée à la méthode ABC Boum, méthode de rééducation de l’écriture.
 					<br />
 					<br />
-					Devenir maman a changé ma façon d’exercer et mon regard sur mes suivis: travailler avec les tout-petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
+					Devenir maman a changé ma façon d’exercer et mon regard sur mes suivis : travailler avec les tout-petits, en partenariat avec les parents est devenu une évidence. Je me suis donc formée à l’accompagnement des enfants porteurs de troubles de l’alimentation avec Marie
 					Ruffier-Bourdet, puis aux difficultés alimentaires du bébé et leur accompagnement en ergothérapie.<br/>
 					<br/>
 					Depuis janvier 2025, j’ai obtenu la certification de consultante en lactation IBCLC, cette certification vient compléter mon parcours pour accompagner les mamans et leur bébé dès la grossesse, et tout au long de leur allaitement.
 				</p>
 			</div>
-			<Image src='/images/icones/ball.svg' alt='Icône ballon' width={500} height={500} className='icon absolute top-[-250px] left-[-150px] -z-10 hidden md:block' />
+			<Image src='/images/icones/ball.svg' alt='' width={500} height={500} className='icon absolute top-[-250px] left-[-150px] -z-10 hidden md:block' />
 		</section>
 	);
 };
