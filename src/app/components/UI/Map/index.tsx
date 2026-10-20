@@ -8,8 +8,8 @@ type MapProps = {
 	lng: number
 }
 
-// Start loading slightly before the map scrolls into view so it is ready when the visitor gets there
-const PRELOAD_MARGIN = '300px'
+// Create the map two screens before it scrolls into view so its tiles are ready when the visitor gets there
+const PRELOAD_MARGIN = '200% 0px'
 
 type MapsLibraries = [google.maps.MapsLibrary, google.maps.MarkerLibrary]
 
@@ -57,7 +57,12 @@ const Map = ({ lat, lng }: MapProps) => {
 			new AdvancedMarkerElement({ map, position: { lat, lng } })
 		}
 
-		// Google Maps (~300 KiB) is only downloaded when the map approaches the viewport
+		// Google Maps (~300 KiB) takes ~2s on a mobile connection: start downloading it as soon as
+		// the visitor scrolls, so it is ready before the map is reached. Visitors who do not scroll
+		// download nothing.
+		const preload = () => loadLibraries()
+		window.addEventListener('scroll', preload, { once: true, passive: true })
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries.some((entry) => entry.isIntersecting)) {
@@ -72,6 +77,7 @@ const Map = ({ lat, lng }: MapProps) => {
 
 		return () => {
 			cancelled = true
+			window.removeEventListener('scroll', preload)
 			observer.disconnect()
 		}
 	}, [lat, lng])
