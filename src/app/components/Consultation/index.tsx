@@ -1,32 +1,28 @@
 import Image from "next/image";
+import type { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
+import RichText from "../UI/RichText";
 import styles from "./styles.module.scss";
 
-const ConsultationSection = () => {
+const ConsultationSection = ({ data }: { data: Content.HomepageDocumentData }) => {
 	return (
 		<>
 			<section id='pour-qui' className='content-container content-container--inner relative'>
-				<h2 className='title text-primary'>Pour qui ?</h2>
+				<h2 className='title text-primary'>{data.for_who_title}</h2>
 				<div className='mt-12'>
-					<p className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16'>Deux cabinets à <strong>Lyon</strong> et <strong>Champagne-au-Mont-d’Or</strong>, et une équipe de plusieurs ergothérapeutes diplômées d’État avec différentes spécialités pour mieux répondre à vos besoins :</p>
+					<RichText field={data.for_who_intro} className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16' />
 					<ul className={`text-base md:text-xl font-light list`}>
-						<li>Troubles de l’alimentation : bébé/enfant qui a des difficultés pour s’alimenter, refuse certaines textures, panel alimentaire restreint, sélectionne des aliments etc.</li>
-						<li>Aide à la mise en place de l’allaitement et accompagnement des éventuelles difficultés : Difficultés de début d’allaitement, difficultés de mise au sein, difficulté de passage au biberon, sevrage</li>
-						<li>Troubles des apprentissages</li>
-						<li>Troubles praxiques, graphiques : douleurs, lenteur d’écriture</li> 
-						<li>Difficultés sensorielles, retard sensori-moteur</li>
-						<li>Troubles du spectre de l’autisme</li>
-						<li>Faible autonomie dans les activités du quotidien, à la maison et/ou à l’école</li>
+						{data.for_who_ergo_items.map((item, index) => (
+							<li key={index}>{item.text}</li>
+						))}
 					</ul>
-					<p className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16'>En tant que consultante en lactation IBCLC, je propose :</p>
+					<RichText field={data.for_who_ibclc_intro} className='text-center font-light text-xl md:text-3xl px-4 xl:px-32 my-16' />
 					<ul className={`text-base md:text-xl font-light list`}>
-						<li>
-							Des consultations d’accompagnement à l’allaitement à domicile ou au cabinet
-						</li>
-						<li>
-							Des séances d’information sur l’allaitement pendant la grossesse 
-						</li>
+						{data.for_who_ibclc_items.map((item, index) => (
+							<li key={index}>{item.text}</li>
+						))}
 					</ul>
-					<p className='text-base md:text-xl font-light mt-16'>Ma spécificité est d’être à la fois ergothérapeute spécialisée en trouble de l’alimentation en pédiatrie, et consultante en lactation IBCLC. Je suis donc en mesure d’accompagner les mamans et leur bébé dans une vision globale, et ce depuis la grossesse, jusqu’au sevrage naturel.</p>
+					<RichText field={data.for_who_conclusion} className='text-base md:text-xl font-light mt-16' />
 				</div>
 				<Image
 				src='/images/icones/pacifier.svg'
@@ -52,18 +48,11 @@ const ConsultationSection = () => {
 			</section>
 			<div>
 				<div className={`${styles.grid} mb-32`}>
-					<div className={styles.grid__item}>
-						<Image src='/images/enfant-crayon.jpg' alt='Crayons pour enfants' width={640} height={853} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
-					</div>
-					<div className={styles.grid__item}>
-						<Image src='/images/allaitement.jpg' alt='Maman qui allaite son bébé' width={640} height={852} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
-					</div>
-					<div className={styles.grid__item}>
-						<Image src='/images/bebe-alimentation.jpg' alt='Bébé mangeant des pâtes' width={640} height={961} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
-					</div>
-					<div className={styles.grid__item}>
-						<Image src='/images/enfant-boulier.jpg' alt='Enfant jouant avec un boulier' width={640} height={960} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
-					</div>
+					{data.for_who_gallery.map((item, index) => (
+						<div className={styles.grid__item} key={index}>
+							<PrismicNextImage field={item.image} fallbackAlt='' sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
+						</div>
+					))}
 				</div>
 			</div>
 		</>

@@ -4,142 +4,623 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = never;
+
+type PickContentRelationshipFieldData<
+	TRelationship extends prismic.CustomTypeModelFetchCustomTypeLevel1 | prismic.CustomTypeModelFetchCustomTypeLevel2 | prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2,
+	TData extends Record<string, prismic.AnyRegularField | prismic.GroupField | prismic.NestedGroupField | prismic.SliceZone>,
+	TLang extends string
+> = |
+	// Content relationship fields
+	{
+		[TSubRelationship in Extract<
+			TRelationship["fields"][number], prismic.CustomTypeModelFetchContentRelationshipLevel1
+		> as TSubRelationship["id"]]:
+			ContentRelationshipFieldWithData<TSubRelationship["customtypes"], TLang>;
+	} &
+	// Group
+	{
+		[TGroup in Extract<
+			TRelationship["fields"][number], prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
+		> as TGroup["id"]]:
+			TData[TGroup["id"]] extends prismic.GroupField<infer TGroupData>
+				? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
+				: never
+	} &
+	// Other fields
+	{
+		[TFieldKey in Extract<TRelationship["fields"][number], string>]:
+			TFieldKey extends keyof TData ? TData[TFieldKey] : never;
+	};
+
+type ContentRelationshipFieldWithData<
+	TCustomType extends readonly (prismic.CustomTypeModelFetchCustomTypeLevel1 | string)[] | readonly (prismic.CustomTypeModelFetchCustomTypeLevel2 | string)[],
+	TLang extends string = string
+> = {
+	[ID in Exclude<TCustomType[number], string>["id"]]:
+		prismic.ContentRelationshipField<
+			ID,
+			TLang,
+			PickContentRelationshipFieldData<
+				Extract<TCustomType[number], { id: ID }>,
+				Extract<prismic.Content.AllDocumentTypes, { type: ID }>["data"],
+				TLang
+			>
+		>
+}[Exclude<TCustomType[number], string>["id"]];
 
 /**
- * Content for Homepage documents
+ * Item in *Page d'accueil → Liste : accompagnements en ergothérapie*
  */
-interface HomepageDocumentData {
-  /**
-   * Header - Titre field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Header - Sous-titre field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.subtitle
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  subtitle: prismic.KeyTextField;
-
-  /**
-   * Header - Second titre field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.second_title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  second_title: prismic.KeyTextField;
-
-  /**
-   * Header - Texte Bouton field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.cta_label
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  cta_label: prismic.KeyTextField;
-
-  /**
-   * Header - Image field in *Homepage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Slice Zone field in *Homepage*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
-   * Meta Description field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: homepage.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Homepage*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: homepage.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
+export interface HomepageDocumentDataForWhoErgoItemsItem {
+	/**
+	 * Élément de la liste field in *Page d'accueil → Liste : accompagnements en ergothérapie*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_ergo_items[].text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	text: prismic.KeyTextField;
 }
 
 /**
- * Homepage document from Prismic
+ * Item in *Page d'accueil → Liste : accompagnements en lactation*
+ */
+export interface HomepageDocumentDataForWhoIbclcItemsItem {
+	/**
+	 * Élément de la liste field in *Page d'accueil → Liste : accompagnements en lactation*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_ibclc_items[].text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Page d'accueil → Galerie de photos (sous la section)*
+ */
+export interface HomepageDocumentDataForWhoGalleryItem {
+	/**
+	 * Photo field in *Page d'accueil → Galerie de photos (sous la section)*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_gallery[].image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Page d'accueil → Cabinets*
+ */
+export interface HomepageDocumentDataAppointmentLocationsItem {
+	/**
+	 * Nom affiché (ville) field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_locations[].city
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	city: prismic.KeyTextField;
+	
+	/**
+	 * Rue field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 7 Rue …
+	 * - **API ID Path**: homepage.appointment_locations[].street_address
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	street_address: prismic.KeyTextField;
+	
+	/**
+	 * Code postal field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_locations[].postal_code
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	postal_code: prismic.KeyTextField;
+	
+	/**
+	 * Ville (adresse postale) field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_locations[].locality
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	locality: prismic.KeyTextField;
+	
+	/**
+	 * Position sur la carte field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: GeoPoint
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_locations[].coordinates
+	 * - **Documentation**: https://prismic.io/docs/fields/geopoint
+	 */
+	coordinates: prismic.GeoPointField;
+	
+	/**
+	 * Lien Doctolib field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: https://…
+	 * - **API ID Path**: homepage.appointment_locations[].doctolib_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	doctolib_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * Lien Docorga field in *Page d'accueil → Cabinets*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: https://…
+	 * - **API ID Path**: homepage.appointment_locations[].docorga_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	docorga_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *Page d'accueil → Aides et financements*
+ */
+export interface HomepageDocumentDataFeesFundingsItem {
+	/**
+	 * Aide field in *Page d'accueil → Aides et financements*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_fundings[].text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Page d'accueil → Tarifs*
+ */
+export interface HomepageDocumentDataFeesPricesItem {
+	/**
+	 * Prestation field in *Page d'accueil → Tarifs*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_prices[].label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	label: prismic.KeyTextField;
+	
+	/**
+	 * Prix (€) field in *Page d'accueil → Tarifs*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_prices[].price
+	 * - **Documentation**: https://prismic.io/docs/fields/number
+	 */
+	price: prismic.NumberField;
+}
+
+/**
+ * Content for Page d'accueil documents
+ */
+interface HomepageDocumentData {
+	/**
+	 * Nom field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Anaïs Glabi-Mus
+	 * - **API ID Path**: homepage.header_name
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	header_name: prismic.KeyTextField;
+	
+	/**
+	 * Métier (à côté du nom) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Ergothérapeute
+	 * - **API ID Path**: homepage.header_job
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	header_job: prismic.KeyTextField;
+	
+	/**
+	 * Sous-titre (Maj+Entrée pour aller à la ligne) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.header_subtitle
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	header_subtitle: prismic.RichTextField;
+	
+	/**
+	 * Lieux field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: À Lyon et Champagne-au-Mont-d'Or
+	 * - **API ID Path**: homepage.header_location
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	header_location: prismic.KeyTextField;
+	
+	/**
+	 * Texte du bouton field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Prendre rendez-vous
+	 * - **API ID Path**: homepage.header_cta_label
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	header_cta_label: prismic.KeyTextField;
+	
+	/**
+	 * Photo (visible sur tablette et ordinateur) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.header_image
+	 * - **Tab**: Accueil
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	header_image: prismic.ImageField<never>;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.ergo_title
+	 * - **Tab**: Ergothérapie
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	ergo_title: prismic.KeyTextField;
+	
+	/**
+	 * Texte field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.ergo_text
+	 * - **Tab**: Ergothérapie
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	ergo_text: prismic.RichTextField;
+	
+	/**
+	 * Photo field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.ergo_image
+	 * - **Tab**: Ergothérapie
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	ergo_image: prismic.ImageField<never>;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.ibclc_title
+	 * - **Tab**: IBCLC
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	ibclc_title: prismic.KeyTextField;
+	
+	/**
+	 * Texte field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.ibclc_text
+	 * - **Tab**: IBCLC
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	ibclc_text: prismic.RichTextField;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_title
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	for_who_title: prismic.KeyTextField;
+	
+	/**
+	 * Introduction field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_intro
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	for_who_intro: prismic.RichTextField;
+	
+	/**
+	 * Liste : accompagnements en ergothérapie field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_ergo_items[]
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	for_who_ergo_items: prismic.GroupField<Simplify<HomepageDocumentDataForWhoErgoItemsItem>>;
+	
+	/**
+	 * Introduction de la partie lactation field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_ibclc_intro
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	for_who_ibclc_intro: prismic.RichTextField;
+	
+	/**
+	 * Liste : accompagnements en lactation field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_ibclc_items[]
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	for_who_ibclc_items: prismic.GroupField<Simplify<HomepageDocumentDataForWhoIbclcItemsItem>>;
+	
+	/**
+	 * Paragraphe de conclusion field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_conclusion
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	for_who_conclusion: prismic.RichTextField;
+	
+	/**
+	 * Galerie de photos (sous la section) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.for_who_gallery[]
+	 * - **Tab**: Pour qui
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	for_who_gallery: prismic.GroupField<Simplify<HomepageDocumentDataForWhoGalleryItem>>;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.about_title
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	about_title: prismic.KeyTextField;
+	
+	/**
+	 * Introduction (en grand) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.about_intro
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	about_intro: prismic.RichTextField;
+	
+	/**
+	 * Portrait field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.about_photo
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	about_photo: prismic.ImageField<never>;
+	
+	/**
+	 * Nom sous le portrait field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.about_name
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	about_name: prismic.KeyTextField;
+	
+	/**
+	 * Titre sous le nom field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Ergothérapeute D.E.
+	 * - **API ID Path**: homepage.about_job_title
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	about_job_title: prismic.KeyTextField;
+	
+	/**
+	 * Parcours field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.about_text
+	 * - **Tab**: Qui suis-je
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	about_text: prismic.RichTextField;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_title
+	 * - **Tab**: Rendez-vous
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	appointment_title: prismic.KeyTextField;
+	
+	/**
+	 * Cabinets field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_locations[]
+	 * - **Tab**: Rendez-vous
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	appointment_locations: prismic.GroupField<Simplify<HomepageDocumentDataAppointmentLocationsItem>>;
+	
+	/**
+	 * Téléphone field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 06 …
+	 * - **API ID Path**: homepage.appointment_phone
+	 * - **Tab**: Rendez-vous
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	appointment_phone: prismic.KeyTextField;
+	
+	/**
+	 * Email field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.appointment_email
+	 * - **Tab**: Rendez-vous
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	appointment_email: prismic.KeyTextField;/**
+	 * Titre field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_title
+	 * - **Tab**: Honoraires
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	fees_title: prismic.KeyTextField;
+	
+	/**
+	 * Introduction field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_intro
+	 * - **Tab**: Honoraires
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	fees_intro: prismic.RichTextField;
+	
+	/**
+	 * Aides et financements field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_fundings[]
+	 * - **Tab**: Honoraires
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	fees_fundings: prismic.GroupField<Simplify<HomepageDocumentDataFeesFundingsItem>>;
+	
+	/**
+	 * Titre des tarifs field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_prices_title
+	 * - **Tab**: Honoraires
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	fees_prices_title: prismic.KeyTextField;
+	
+	/**
+	 * Tarifs field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.fees_prices[]
+	 * - **Tab**: Honoraires
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	fees_prices: prismic.GroupField<Simplify<HomepageDocumentDataFeesPricesItem>>;/**
+	 * Titre dans Google et dans l'onglet du navigateur field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.meta_title
+	 * - **Tab**: SEO
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_title: prismic.KeyTextField;
+	
+	/**
+	 * Description dans Google (environ 150 caractères) field in *Page d'accueil*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.meta_description
+	 * - **Tab**: SEO
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_description: prismic.KeyTextField;
+}
+
+/**
+ * Page d'accueil document from Prismic
  *
  * - **API ID**: `homepage`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
+ * - **Documentation**: https://prismic.io/docs/content-modeling
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HomepageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<HomepageDocumentData>,
-    "homepage",
-    Lang
-  >;
+export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
 
 export type AllDocumentTypes = HomepageDocument;
 
 declare module "@prismicio/client" {
-  interface CreateClient {
-    (
-      repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig,
-    ): prismic.Client<AllDocumentTypes>;
-  }
-
-  namespace Content {
-    export type {
-      HomepageDocument,
-      HomepageDocumentData,
-      HomepageDocumentDataSlicesSlice,
-      AllDocumentTypes,
-    };
-  }
+	interface CreateClient {
+		(repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
+	}
+	
+	interface CreateWriteClient {
+		(repositoryNameOrEndpoint: string, options: prismic.WriteClientConfig): prismic.WriteClient<AllDocumentTypes>;
+	}
+	
+	interface CreateMigration {
+		(): prismic.Migration<AllDocumentTypes>;
+	}
+	
+	namespace Content {
+		export type {
+			HomepageDocument,
+			HomepageDocumentData,
+			HomepageDocumentDataForWhoErgoItemsItem,
+			HomepageDocumentDataForWhoIbclcItemsItem,
+			HomepageDocumentDataForWhoGalleryItem,
+			HomepageDocumentDataAppointmentLocationsItem,
+			HomepageDocumentDataFeesFundingsItem,
+			HomepageDocumentDataFeesPricesItem,
+			AllDocumentTypes
+		}
+	}
 }

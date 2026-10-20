@@ -1,87 +1,397 @@
 {
   "id": "homepage",
-  "label": "Homepage",
-  "format": "page",
+  "label": "Page d'accueil",
+  "format": "custom",
   "repeatable": false,
   "status": true,
   "json": {
-    "Main": {
-      "uid": {
-        "type": "UID",
-        "config": {
-          "label": "uid",
-          "placeholder": ""
-        }
-      },
-      "title": {
+    "Accueil": {
+      "header_name": {
         "type": "Text",
         "config": {
-          "label": "Header - Titre",
-          "placeholder": ""
+          "label": "Nom",
+          "placeholder": "Anaïs Glabi-Mus"
         }
       },
-      "subtitle": {
+      "header_job": {
         "type": "Text",
         "config": {
-          "label": "Header - Sous-titre",
-          "placeholder": ""
+          "label": "Métier (à côté du nom)",
+          "placeholder": "Ergothérapeute"
         }
       },
-      "second_title": {
+      "header_subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Sous-titre (Maj+Entrée pour aller à la ligne)",
+          "placeholder": "",
+          "multi": "paragraph,strong,em",
+          "allowTargetBlank": true
+        }
+      },
+      "header_location": {
         "type": "Text",
         "config": {
-          "label": "Header - Second titre",
-          "placeholder": ""
+          "label": "Lieux",
+          "placeholder": "À Lyon et Champagne-au-Mont-d'Or"
         }
       },
-      "cta_label": {
+      "header_cta_label": {
         "type": "Text",
         "config": {
-          "label": "Header - Texte Bouton",
-          "placeholder": ""
+          "label": "Texte du bouton",
+          "placeholder": "Prendre rendez-vous"
         }
       },
-      "image": {
+      "header_image": {
         "type": "Image",
         "config": {
-          "label": "Header - Image",
+          "label": "Photo (visible sur tablette et ordinateur)",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    },
+    "Ergothérapie": {
+      "ergo_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre",
+          "placeholder": ""
+        }
+      },
+      "ergo_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Texte",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "ergo_image": {
+        "type": "Image",
+        "config": {
+          "label": "Photo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    },
+    "IBCLC": {
+      "ibclc_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre",
+          "placeholder": ""
+        }
+      },
+      "ibclc_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Texte",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      }
+    },
+    "Pour qui": {
+      "for_who_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre",
+          "placeholder": ""
+        }
+      },
+      "for_who_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Introduction",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "for_who_ergo_items": {
+        "type": "Group",
+        "config": {
+          "label": "Liste : accompagnements en ergothérapie",
+          "repeat": true,
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Élément de la liste",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "for_who_ibclc_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Introduction de la partie lactation",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "for_who_ibclc_items": {
+        "type": "Group",
+        "config": {
+          "label": "Liste : accompagnements en lactation",
+          "repeat": true,
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Élément de la liste",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "for_who_conclusion": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Paragraphe de conclusion",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "for_who_gallery": {
+        "type": "Group",
+        "config": {
+          "label": "Galerie de photos (sous la section)",
+          "repeat": true,
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Photo",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "Qui suis-je": {
+      "about_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre",
+          "placeholder": ""
+        }
+      },
+      "about_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Introduction (en grand)",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "about_photo": {
+        "type": "Image",
+        "config": {
+          "label": "Portrait",
           "constraint": {},
           "thumbnails": []
         }
       },
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+      "about_name": {
+        "type": "Text",
         "config": {
-          "choices": {}
+          "label": "Nom sous le portrait",
+          "placeholder": ""
+        }
+      },
+      "about_job_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre sous le nom",
+          "placeholder": "Ergothérapeute D.E."
+        }
+      },
+      "about_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Parcours",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
         }
       }
     },
-    "SEO & Metadata": {
-      "meta_description": {
+    "Rendez-vous": {
+      "appointment_title": {
+        "type": "Text",
         "config": {
-          "label": "Meta Description",
-          "placeholder": "A brief summary of the page"
-        },
-        "type": "Text"
+          "label": "Titre",
+          "placeholder": ""
+        }
       },
-      "meta_image": {
+      "appointment_locations": {
+        "type": "Group",
         "config": {
-          "constraint": {
-            "height": 1260,
-            "width": 2400
-          },
-          "label": "Meta Image",
-          "thumbnails": []
-        },
-        "type": "Image"
+          "label": "Cabinets",
+          "repeat": true,
+          "fields": {
+            "city": {
+              "type": "Text",
+              "config": {
+                "label": "Nom affiché (ville)",
+                "placeholder": ""
+              }
+            },
+            "street_address": {
+              "type": "Text",
+              "config": {
+                "label": "Rue",
+                "placeholder": "7 Rue …"
+              }
+            },
+            "postal_code": {
+              "type": "Text",
+              "config": {
+                "label": "Code postal",
+                "placeholder": ""
+              }
+            },
+            "locality": {
+              "type": "Text",
+              "config": {
+                "label": "Ville (adresse postale)",
+                "placeholder": ""
+              }
+            },
+            "coordinates": {
+              "type": "GeoPoint",
+              "config": {
+                "label": "Position sur la carte"
+              }
+            },
+            "doctolib_link": {
+              "type": "Link",
+              "config": {
+                "label": "Lien Doctolib",
+                "select": "web",
+                "allowTargetBlank": true,
+                "placeholder": "https://…"
+              }
+            },
+            "docorga_link": {
+              "type": "Link",
+              "config": {
+                "label": "Lien Docorga",
+                "select": "web",
+                "allowTargetBlank": true,
+                "placeholder": "https://…"
+              }
+            }
+          }
+        }
       },
+      "appointment_phone": {
+        "type": "Text",
+        "config": {
+          "label": "Téléphone",
+          "placeholder": "06 …"
+        }
+      },
+      "appointment_email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": ""
+        }
+      }
+    },
+    "Honoraires": {
+      "fees_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre",
+          "placeholder": ""
+        }
+      },
+      "fees_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Introduction",
+          "placeholder": "",
+          "multi": "paragraph,strong,em,hyperlink",
+          "allowTargetBlank": true
+        }
+      },
+      "fees_fundings": {
+        "type": "Group",
+        "config": {
+          "label": "Aides et financements",
+          "repeat": true,
+          "fields": {
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Aide",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "fees_prices_title": {
+        "type": "Text",
+        "config": {
+          "label": "Titre des tarifs",
+          "placeholder": ""
+        }
+      },
+      "fees_prices": {
+        "type": "Group",
+        "config": {
+          "label": "Tarifs",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Prestation",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Number",
+              "config": {
+                "label": "Prix (€)",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "SEO": {
       "meta_title": {
+        "type": "Text",
         "config": {
-          "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
+          "label": "Titre dans Google et dans l'onglet du navigateur",
+          "placeholder": ""
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Description dans Google (environ 150 caractères)",
+          "placeholder": ""
+        }
       }
     }
   }
