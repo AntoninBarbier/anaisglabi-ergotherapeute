@@ -35,6 +35,10 @@ export const metadata: Metadata = {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 	},
+	verification: {
+		// Google Search Console ownership (URL-prefix property)
+		google: '9A__BmHDHoipWckD3W_YiuIpLiM1gOTCjIdlLls6w8o',
+	},
 }
 
 export default function RootLayout({
