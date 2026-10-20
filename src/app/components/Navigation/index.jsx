@@ -65,7 +65,7 @@ const Navigation = () => {
 						<a href='#ergotherapie'>L&apos;ergothérapie</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 2 ? "navigation__item--active" : ""}`}>
-						<a href='#ergotherapie'>Lactation IBCLC</a>
+						<a href='#ibcl'>Lactation IBCLC</a>
 					</li>
 					<li className={`navigation__item ${activeItem === 3 ? "navigation__item--active" : ""}`}>
 						<a href='#pour-qui'>Pour qui ?</a>
