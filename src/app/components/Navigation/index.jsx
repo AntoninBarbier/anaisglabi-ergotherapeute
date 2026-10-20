@@ -86,7 +86,7 @@ const Navigation = () => {
 	return (
 		<>
 			<nav aria-label='Menu principal' className={`navigation ${isSticky ? "navigation--sticky" : ""} ${isInvisible ? "navigation--invisible" : ""}`}>
-				<ul className='text-primary w-full justify-end md:justify-center gap-12 hidden md:flex'>
+				<ul className='text-primary w-full justify-center gap-6 xl:gap-12 hidden lg:flex whitespace-nowrap'>
 					<li className={`navigation__item ${activeItem === 0 ? "navigation__item--active" : ""}`}>
 						<a href='#accueil'>Accueil</a>
 					</li>

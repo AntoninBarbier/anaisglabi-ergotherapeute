@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Anaïs Glabi-Mus – Ergothérapeute et consultante en lactation IBCLC
 
-## Getting Started
+Site vitrine d'Anaïs Glabi-Mus, ergothérapeute et consultante en lactation IBCLC à Lyon et Champagne-au-Mont-d'Or.
 
-First, run the development server:
+En ligne : **https://ergotherapeute-lyon.fr**
+
+## Stack
+
+- [Next.js 16](https://nextjs.org/) (App Router) et React 19
+- Tailwind CSS 3 + Sass
+- Google Maps JavaScript API (cartes des cabinets)
+- Hébergement [Netlify](https://www.netlify.com/), domaine géré chez Hostinger
+
+## Démarrer en local
+
+Prérequis : Node.js 22 (voir `.nvmrc`).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est accessible sur http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Les cartes ont besoin d'une clé Google Maps dans `.env.local` (non versionné) :
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=...
+```
 
-## Learn More
+Autres commandes :
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint     # ESLint
+npm run build    # build de production
+npm run start    # sert le build de production
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Modifier le contenu
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Je veux changer… | Fichier |
+|---|---|
+| Les **tarifs**, les **adresses**, le **téléphone**, l'**email**, les liens **Doctolib/Docorga** | `src/app/data/practice.ts` |
+| Le **titre** et la **description** pour Google | `src/app/data/practice.ts` (`SITE_TITLE`, `SITE_DESCRIPTION`) |
+| Les textes d'une section | `src/app/components/<Section>/index.tsx` |
+| Les aides et financements | `src/app/components/Funding/index.tsx` |
+| Les liens du menu | `src/app/components/Navigation/index.jsx` (menus desktop et mobile) |
+| Les images | `public/images/` |
 
-## Deploy on Vercel
+`src/app/data/practice.ts` est la source unique des infos du cabinet : la page **et** les données structurées lues par Google (JSON-LD) s'en servent, elles restent donc toujours cohérentes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Générés automatiquement par Next.js :
+
+- `/robots.txt` → `src/app/robots.ts`
+- `/sitemap.xml` → `src/app/sitemap.ts`
+- Image de partage (WhatsApp, Facebook, LinkedIn) → `src/app/opengraph-image.tsx`
+- Balises meta, Open Graph et vérification Google Search Console → `src/app/layout.tsx`
+- Données structurées (JSON-LD) → `src/app/components/StructuredData/index.tsx`
+
+## Déploiement
+
+Netlify est relié au dépôt GitHub :
+
+- chaque **pull request** génère un **Deploy Preview** (en `noindex` : ignorer le score SEO de Lighthouse sur ces previews, ainsi que la barre d'outils Netlify qui fausse la performance) ;
+- chaque **merge sur `main`** est mis en production automatiquement.
+
+## Prismic
+
+Prismic et Slice Machine sont installés mais **pas encore utilisés** : tout le contenu est dans le code. Les routes `src/app/api/*` et `/slice-simulator` en dépendent.

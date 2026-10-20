@@ -1,0 +1,9 @@
+# Only what Next.js cannot configure itself on Netlify: files from public/ are
+# served straight from Netlify's CDN, so headers() in next.config.mjs does not apply to them.
+# Build settings stay in the Netlify UI.
+
+# Icons and pictures rarely change: let browsers keep them for a week
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
