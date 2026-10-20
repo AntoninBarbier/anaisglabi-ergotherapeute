@@ -53,16 +53,16 @@ const ConsultationSection = () => {
 			<div>
 				<div className={`${styles.grid} mb-32`}>
 					<div className={styles.grid__item}>
-						<Image src='/images/enfant-crayon.jpg' alt='Crayons pour enfants' width={640} height={853} />
+						<Image src='/images/enfant-crayon.jpg' alt='Crayons pour enfants' width={640} height={853} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
 					</div>
 					<div className={styles.grid__item}>
-						<Image src='/images/allaitement.jpg' alt='Maman qui allaite son bébé' width={640} height={852} />
+						<Image src='/images/allaitement.jpg' alt='Maman qui allaite son bébé' width={640} height={852} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
 					</div>
 					<div className={styles.grid__item}>
-						<Image src='/images/bebe-alimentation.jpg' alt='Bébé mangeant des pâtes' width={640} height={961} />
+						<Image src='/images/bebe-alimentation.jpg' alt='Bébé mangeant des pâtes' width={640} height={961} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
 					</div>
 					<div className={styles.grid__item}>
-						<Image src='/images/enfant-boulier.jpg' alt='Enfant jouant avec un boulier' width={640} height={960} />
+						<Image src='/images/enfant-boulier.jpg' alt='Enfant jouant avec un boulier' width={640} height={960} sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw' />
 					</div>
 				</div>
 			</div>
