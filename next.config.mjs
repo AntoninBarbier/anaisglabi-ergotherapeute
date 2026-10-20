@@ -18,11 +18,6 @@ const nextConfig = {
 					{ key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
 				],
 			},
-			{
-				// Icons and pictures rarely change: let browsers keep them for a week
-				source: '/images/:path*',
-				headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }],
-			},
 		]
 	},
 }
