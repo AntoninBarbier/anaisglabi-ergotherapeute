@@ -7,10 +7,12 @@ import AboutSection from "./components/About";
 import AppointmentSection from "./components/Appointment";
 import FundingSection from "./components/Funding";
 import Footer from "./components/Footer";
+import StructuredData from "./components/StructuredData";
 
 export default function Home() {
 	return (
 		<>
+			<StructuredData />
 			<Navigation />
 			<Header />
 			<main>

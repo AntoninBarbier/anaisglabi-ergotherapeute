@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { services } from "../../data/practice";
 
 const FundingSection = () => {
 	const tags = [
@@ -10,13 +11,6 @@ const FundingSection = () => {
 		},
 		{ text: "Financement par les Plateformes de Coordination et d’Orientation (PCO)", color: "#FFE9E2" },
 		{ text: "Financement par les Pôles de Compétences et de Prestations Externalisées (PCPE)", color: "#FFE4E2" },
-	];
-
-	const services = [
-		{ label: "Bilan d’ergothérapie", price: 190 },
-		{ label: "Consultation alimentation ou allaitement", price: 70 },
-		{ label: "Séance d’ergothérapie au cabinet (45 minutes)", price: 48 },
-		{ label: "Séance d’ergothérapie à domicile ou à l’école (45 minutes)", price: 58 },
 	];
 	return (
 		<section id='financements' className='content-container content-container--inner'>

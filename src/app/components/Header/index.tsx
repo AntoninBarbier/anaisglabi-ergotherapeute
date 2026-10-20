@@ -18,7 +18,7 @@ const Header = () => {
 							<br />
 							<span className='text-xl md:text-2xl font-normal italic'>Ergothérapeute et consultante en lactation certifiée IBCLC<br/>Spécialisée en pédiatrie et en lactation humaine à Lyon et dans l’ouest Lyonnais.</span>
 						</h1>
-						<h2 className='text-xl font-normal'>À Lyon et Champagne-au-Mont-d&apos;Or</h2>
+						<p className='text-xl font-normal'>À Lyon et Champagne-au-Mont-d&apos;Or</p>
 						<Button href='#prendre-rendez-vous'>Prendre rendez-vous</Button>
 					</div>
 					<div className='hidden md:block'>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.scss'
 import { Source_Sans_3, Source_Serif_4 } from 'next/font/google'
-import localFont from 'next/font/local'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from './data/practice'
 
 const source_serif_4 = Source_Serif_4({
 	display: 'swap',
@@ -16,8 +16,25 @@ const source_sans_3 = Source_Sans_3({
 })
 
 export const metadata: Metadata = {
-	title: 'Ergothérapeute et consultante en lactation IBCLC à Lyon | Anaïs Glabi',
-	description: "Ergothérapeute et consultante en lactation certifiée IBCLC. Spécialisée en pédiatrie et en lactation humaine à Lyon et dans l’ouest Lyonnais.",
+	metadataBase: new URL(SITE_URL),
+	title: SITE_TITLE,
+	description: SITE_DESCRIPTION,
+	alternates: {
+		canonical: '/',
+	},
+	openGraph: {
+		type: 'website',
+		locale: 'fr_FR',
+		url: '/',
+		siteName: 'Anaïs Glabi-Mus – Ergothérapeute',
+		title: SITE_TITLE,
+		description: SITE_DESCRIPTION,
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: SITE_TITLE,
+		description: SITE_DESCRIPTION,
+	},
 }
 
 export default function RootLayout({
