@@ -10,7 +10,7 @@ type ButtonProps = {
 	target?: "_blank";
 };
 
-const baseClasses = "font-sans border tracking-[2px] md:tracking-[4px] uppercase xl:hover:text-white";
+const baseClasses = "inline-block w-fit text-center font-sans border tracking-[2px] md:tracking-[4px] uppercase xl:hover:text-white";
 
 const colorClasses: Record<Required<ButtonProps>["color"], string> = {
 	primary: `text-primary border-primary ${styles.shadow_primary}`,
@@ -30,8 +30,9 @@ const shapeClasses: Record<Required<ButtonProps>["shape"], string> = {
 
 const Button = ({ children, href, size = "medium", color = "primary", shape = "normal", target }: ButtonProps) => {
 	return (
-		<a href={href} className='w-fit' target={target}>
-			<button className={`${baseClasses} ${colorClasses[color]} ${sizeClasses[size]} ${shapeClasses[shape]}`}>{children}</button>
+		<a href={href} target={target} rel={target === "_blank" ? "noopener" : undefined} className={`${baseClasses} ${colorClasses[color]} ${sizeClasses[size]} ${shapeClasses[shape]}`}>
+			{children}
+			{target === "_blank" && <span className='sr-only'> (nouvel onglet)</span>}
 		</a>
 	);
 };
