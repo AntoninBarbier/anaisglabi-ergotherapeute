@@ -1,5 +1,5 @@
 import * as prismic from "@prismicio/client";
-import * as prismicNext from "@prismicio/next";
+import type * as prismicNext from "@prismicio/next";
 import config from "../slicemachine.config.json";
 
 /**
@@ -22,7 +22,8 @@ const routes: prismic.ClientConfig["routes"] = [
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
- * query content from the Prismic API.
+ * query content from the Prismic API. It only reads published content: the site
+ * has no draft previews.
  *
  * In production, responses are cached with the "prismic" tag: the Prismic webhook
  * calls /api/revalidate on publish, and the cache expires after a minute anyway
@@ -39,8 +40,6 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
         : { next: { revalidate: 5 } },
     ...config,
   });
-
-  prismicNext.enableAutoPreviews({ client });
 
   return client;
 };
