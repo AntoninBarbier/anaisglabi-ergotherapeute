@@ -13,22 +13,19 @@ export const repositoryName =
  *
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
-// TODO: Update the routes array to match your project's route structure.
 const routes: prismic.ClientConfig["routes"] = [
-  // Examples:
-  // {
-  // 	type: "homepage",
-  // 	path: "/",
-  // },
-  // {
-  // 	type: "page",
-  // 	path: "/:uid",
-  // },
+  {
+    type: "homepage",
+    path: "/",
+  },
 ];
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
  * query content from the Prismic API.
+ *
+ * In production, responses are cached with the "prismic" tag until the Prismic
+ * webhook calls /api/revalidate on publish.
  *
  * @param config - Configuration for the Prismic client.
  */

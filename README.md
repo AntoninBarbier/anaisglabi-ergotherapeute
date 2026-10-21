@@ -8,12 +8,13 @@ En ligne : **https://ergotherapeute-lyon.fr**
 
 - [Next.js 16](https://nextjs.org/) (App Router) et React 19
 - Tailwind CSS 3 + Sass
+- [Prismic](https://prismic.io/) pour tout le contenu (textes, images, prix)
 - Google Maps JavaScript API (cartes des cabinets)
 - Hébergement [Netlify](https://www.netlify.com/), domaine géré chez Hostinger
 
 ## Démarrer en local
 
-Prérequis : Node.js 22 (voir `.nvmrc`).
+Prérequis : Node.js 22 (voir `.nvmrc`, `nvm use`).
 
 ```bash
 npm install
@@ -38,16 +39,34 @@ npm run start    # sert le build de production
 
 ## Modifier le contenu
 
-| Je veux changer… | Fichier |
-|---|---|
-| Les **tarifs**, les **adresses**, le **téléphone**, l'**email**, les liens **Doctolib/Docorga** | `src/app/data/practice.ts` |
-| Le **titre** et la **description** pour Google | `src/app/data/practice.ts` (`SITE_TITLE`, `SITE_DESCRIPTION`) |
-| Les textes d'une section | `src/app/components/<Section>/index.tsx` |
-| Les aides et financements | `src/app/components/Funding/index.tsx` |
-| Les liens du menu | `src/app/components/Navigation/index.jsx` (menus desktop et mobile) |
-| Les images | `public/images/` |
+**Tout le contenu se modifie dans Prismic**, dépôt `anaisglabi-ergotherapeute`, document **« Page d'accueil »** : un onglet par section (Accueil, Ergothérapie, IBCLC, Pour qui, Qui suis-je, Rendez-vous, Honoraires, SEO). Une fois le document **publié**, le site se met à jour tout seul (webhook Prismic → `/api/revalidate`).
 
-`src/app/data/practice.ts` est la source unique des infos du cabinet : la page **et** les données structurées lues par Google (JSON-LD) s'en servent, elles restent donc toujours cohérentes.
+Le bouton **Aperçu** de Prismic affiche les modifications non publiées sur le vrai site (`/api/preview`).
+
+Reste dans le code :
+
+| Élément | Fichier |
+|---|---|
+| Les liens du menu | `src/app/components/Navigation/index.jsx` (menus desktop et mobile) |
+| Les icônes décoratives | `public/images/icones/` |
+| Les couleurs et la mise en page | `tailwind.config.ts`, `src/app/globals.scss`, composants |
+
+### Modifier le modèle Prismic
+
+Le modèle est versionné dans `customtypes/homepage/index.json`. Pour ajouter ou modifier un champ :
+
+```bash
+npm run slicemachine   # puis http://localhost:9999 → modifier → Push
+```
+
+`prismicio-types.d.ts` est régénéré par Slice Machine.
+
+### Variables d'environnement
+
+| Variable | Où | Rôle |
+|---|---|---|
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | `.env.local`, Netlify | Cartes |
+| `PRISMIC_WEBHOOK_SECRET` | Netlify | Secret partagé avec le webhook Prismic (*Settings → Webhooks*) |
 
 ## SEO
 
@@ -66,6 +85,6 @@ Netlify est relié au dépôt GitHub :
 - chaque **pull request** génère un **Deploy Preview** (en `noindex` : ignorer le score SEO de Lighthouse sur ces previews, ainsi que la barre d'outils Netlify qui fausse la performance) ;
 - chaque **merge sur `main`** est mis en production automatiquement.
 
-## Prismic
+## Migration initiale
 
-Prismic et Slice Machine sont installés mais **pas encore utilisés** : tout le contenu est dans le code. Les routes `src/app/api/*` et `/slice-simulator` en dépendent.
+`scripts/prismic-migrate-homepage.mjs` a recopié le contenu historique du site dans Prismic (octobre 2026). Il refuse de s'exécuter si une page d'accueil est déjà publiée.

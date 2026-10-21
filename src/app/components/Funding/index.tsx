@@ -1,32 +1,28 @@
 import Image from "next/image";
-import { services } from "../../data/practice";
+import type { Content } from "@prismicio/client";
+import RichText from "../UI/RichText";
 
-const FundingSection = () => {
-	const tags = [
-		{ text: "Financement par votre mutuelle", color: "#EDF8C9" },
-		{ text: "Demande de prestation extra-légale auprès de la sécurité sociale", color: "#F9F8DE" },
-		{
-			text: "Financement par la Maison Départementale des Personnes Handicapées (MDPH) via l’Allocation Education Enfant Handicapé (AEEH)",
-			color: "#FFF5E5",
-		},
-		{ text: "Financement par les Plateformes de Coordination et d’Orientation (PCO)", color: "#FFE9E2" },
-		{ text: "Financement par les Pôles de Compétences et de Prestations Externalisées (PCPE)", color: "#FFE4E2" },
-	];
+// Background of the funding tags, cycled in order
+const TAG_COLORS = ["#EDF8C9", "#F9F8DE", "#FFF5E5", "#FFE9E2", "#FFE4E2"];
+
+const FundingSection = ({ data }: { data: Content.HomepageDocumentData }) => {
+	const prices = data.fees_prices.filter((service) => service.label && service.price !== null);
+
 	return (
 		<section id='financements' className='content-container content-container--inner'>
 			<Image src='/images/icones/document.svg' alt='' width={400} height={400} className='icon absolute w-[300px] md:w-[400px] top-[-500px] md:top-[-150px] right-0 transform rotate-12 translate-x-[30px] -z-10' />
-			<h2 className='title text-green mb-8 md:mb-12'>Honoraires et financements</h2>
-			<p className='mb-8 md:mb-12 text-base md:text-xl font-light'>L’ergothérapie est une profession de santé non remboursée par la sécurité sociale. Cependant, des aides existent et peuvent être mises en place :</p>
+			<h2 className='title text-green mb-8 md:mb-12'>{data.fees_title}</h2>
+			<RichText field={data.fees_intro} className='mb-8 md:mb-12 text-base md:text-xl font-light' />
 			<ul className='flex flex-wrap gap-5 mb-16'>
-				{tags.map((tag, index) => (
-					<li key={`funding-tag-${index}`} style={{ backgroundColor: tag.color }} className='p-2 md:p-4 rounded-[10px] font-light'>
+				{data.fees_fundings.map((tag, index) => (
+					<li key={`funding-tag-${index}`} style={{ backgroundColor: TAG_COLORS[index % TAG_COLORS.length] }} className='p-2 md:p-4 rounded-[10px] font-light'>
 						{tag.text}
 					</li>
 				))}
 			</ul>
-			<h3 className='title text-primary text-center text-2xl xl:text-3xl mb-8 md:mb-12'>Les tarifs au cabinet</h3>
+			<h3 className='title text-primary text-center text-2xl xl:text-3xl mb-8 md:mb-12'>{data.fees_prices_title}</h3>
 			<div className='grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12'>
-				{services.map((service, index) => (
+				{prices.map((service, index) => (
 					<div
 						key={`price-card-${index}`}
 						style={{
