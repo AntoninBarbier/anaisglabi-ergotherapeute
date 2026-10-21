@@ -39,9 +39,9 @@ npm run start    # sert le build de production
 
 ## Modifier le contenu
 
-**Tout le contenu se modifie dans Prismic**, dépôt `anaisglabi-ergotherapeute`, document **« Page d'accueil »** : un onglet par section (Accueil, Ergothérapie, IBCLC, Pour qui, Qui suis-je, Rendez-vous, Honoraires, SEO). Une fois le document **publié**, le site se met à jour tout seul (webhook Prismic → `/api/revalidate`).
+**Tout le contenu se modifie dans Prismic**, dépôt `anaisglabi-ergotherapeute`, document **« Page d'accueil »** : un onglet par section (Accueil, Ergothérapie, IBCLC, Pour qui, Qui suis-je, Rendez-vous, Honoraires, SEO). Une fois le document **publié**, le site se met à jour tout seul (webhook Prismic → `/api/revalidate`, et au plus tard une minute après si le webhook échoue).
 
-Le bouton **Aperçu** de Prismic affiche les modifications non publiées sur le vrai site (`/api/preview`).
+Le bouton **Aperçu** de Prismic affiche les modifications non publiées sur le vrai site (`/api/preview`), uniquement dans le navigateur qui fait l'aperçu (cookies). Pour revoir le site publié dans ce navigateur, fermer l'aperçu avec la croix de la barre d'outils Prismic (ou utiliser une fenêtre privée).
 
 Reste dans le code :
 
