@@ -24,8 +24,9 @@ const routes: prismic.ClientConfig["routes"] = [
  * Creates a Prismic client for the project's repository. The client is used to
  * query content from the Prismic API.
  *
- * In production, responses are cached with the "prismic" tag until the Prismic
- * webhook calls /api/revalidate on publish.
+ * In production, responses are cached with the "prismic" tag: the Prismic webhook
+ * calls /api/revalidate on publish, and the cache expires after a minute anyway
+ * in case the webhook fails.
  *
  * @param config - Configuration for the Prismic client.
  */
@@ -34,7 +35,7 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     routes,
     fetchOptions:
       process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        ? { next: { tags: ["prismic"], revalidate: 60 } }
         : { next: { revalidate: 5 } },
     ...config,
   });
